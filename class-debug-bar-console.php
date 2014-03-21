@@ -91,6 +91,8 @@ class Debug_Bar_Console extends Debug_Bar_Panel {
 			die();
 
 		} elseif ( 'sql' == $mode ) {
+			//save last data as a transient
+			set_transient( 'debug_bar_last_sql', $data );
 			$data = explode( ";\n", $data );
 			foreach ( $data as $query ) {
 				$query = str_replace( '$wpdb->', $wpdb->prefix, $query );
