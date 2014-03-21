@@ -74,6 +74,8 @@ class Debug_Bar_Console extends Debug_Bar_Panel {
 		$mode = $_POST['mode'];
 
 		if ( 'php' == $mode ) {
+			//save last PHP data as a transient
+			set_transient( 'debug_bar_last_php', $data );
 			// Trim the data
 			$data = '?>' . trim( $data );
 
